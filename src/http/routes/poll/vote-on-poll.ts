@@ -2,6 +2,8 @@ import { FastifyInstance } from "fastify";
 import z from "zod";
 import { prismaService } from "../../../lib/prisma/prisma.service";
 import { randomUUID } from "crypto";
+import { Redis } from "ioredis";
+import { redis } from "../../../lib/redis/redis";
 export async function voteOnPoll(app: FastifyInstance) {
   app.post("/polls/:pollId/vote", async (req, reply) => {
     const requestSafeParam = z.object({
@@ -26,6 +28,7 @@ export async function voteOnPoll(app: FastifyInstance) {
       });
       if (voteAlreadyExist) {
         if (voteAlreadyExist.pollOptionId !== pollOptionId) {
+          redis.zincrby(pollId, -1, voteAlreadyExist.pollOptionId);
           await prismaService.vote.delete({
             where: {
               id: voteAlreadyExist.id,
@@ -48,7 +51,7 @@ export async function voteOnPoll(app: FastifyInstance) {
         signed: true,
       });
     }
-
+    redis.zincrby(pollId, 1, pollOptionId);
     await prismaService.vote.create({
       data: {
         sessionId,

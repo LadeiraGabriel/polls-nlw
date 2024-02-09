@@ -6,13 +6,14 @@ content-type: application/json
   "pollOptions": ["javaScript", "C#", "Go"]
 }
 ###
-GET  http://localhost:3333/polls/d7cbaaa3-524e-4b21-ac50-bb448bd622c1
-
+GET  http://localhost:3333/polls/7690c458-6c2e-43a4-9c0a-ad191641140d
 
 ### 
-POST http://localhost:3333/polls/d7cbaaa3-524e-4b21-ac50-bb448bd622c1/vote
+POST http://localhost:3333/polls/7690c458-6c2e-43a4-9c0a-ad191641140d/vote
 content-type: application/json
 
 {
-  "pollOptionId": "53fd69c8-78b8-4963-a328-3e0ddc118bcc"
+  "pollOptionId": "46c1ee5f-7bc5-4243-b539-20aad5754105"
 }
+###
+GET  http://localhost:3333/polls/d7cbaaa3-524e-4b21-ac50-bb448bd622c1/result
