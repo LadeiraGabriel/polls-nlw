@@ -1,4 +1,4 @@
-# Esse Projetos é baseado no Projeto de Enquetes do evento NWL da Rockseat
+# Esse Projeto é baseado no Projeto de Enquetes do evento NWL da Rockseat
 
 ## A ideia aqui é linkar o projeto com um front end.
 
