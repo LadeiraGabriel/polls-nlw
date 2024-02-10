@@ -4,6 +4,7 @@ import { prismaService } from "../../../lib/prisma/prisma.service";
 import { randomUUID } from "crypto";
 import { Redis } from "ioredis";
 import { redis } from "../../../lib/redis/redis";
+import { voting } from "../../../utils/voting-pub-sub";
 export async function voteOnPoll(app: FastifyInstance) {
   app.post("/polls/:pollId/vote", async (req, reply) => {
     const requestSafeParam = z.object({
@@ -58,6 +59,11 @@ export async function voteOnPoll(app: FastifyInstance) {
         pollId,
         pollOptionId,
       },
+    });
+
+    voting.publish(pollId, {
+      pollOptionId,
+      votes: 1,
     });
     return reply.status(201).send();
   });

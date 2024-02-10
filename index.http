@@ -13,7 +13,5 @@ POST http://localhost:3333/polls/18dbf72b-a9ca-4f8e-9bef-06e48b8f1822/vote
 content-type: application/json
 
 {
-  "pollOptionId": "5ddb9526-f3da-430c-8f44-14c16b3cd385"
+  "pollOptionId": "03ffcde7-1a05-44af-8b21-8026bd090919"
 }
-###
-GET  http://localhost:3333/polls/d7cbaaa3-524e-4b21-ac50-bb448bd622c1/result
