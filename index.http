@@ -2,18 +2,18 @@ POST http://localhost:3333/polls
 content-type: application/json
 
 {
-  "title": "qual é sua linguagem de programação favorita?",
-  "pollOptions": ["javaScript", "C#", "Go"]
+  "title": "qual seu livro de programação favorito?",
+  "pollOptions": ["DDD", "Clean code", "Entendendo algoritmos"]
 }
 ###
-GET  http://localhost:3333/polls/7690c458-6c2e-43a4-9c0a-ad191641140d
+GET  http://localhost:3333/polls/18dbf72b-a9ca-4f8e-9bef-06e48b8f1822
 
 ### 
-POST http://localhost:3333/polls/7690c458-6c2e-43a4-9c0a-ad191641140d/vote
+POST http://localhost:3333/polls/18dbf72b-a9ca-4f8e-9bef-06e48b8f1822/vote
 content-type: application/json
 
 {
-  "pollOptionId": "46c1ee5f-7bc5-4243-b539-20aad5754105"
+  "pollOptionId": "5ddb9526-f3da-430c-8f44-14c16b3cd385"
 }
 ###
 GET  http://localhost:3333/polls/d7cbaaa3-524e-4b21-ac50-bb448bd622c1/result

@@ -1,6 +1,6 @@
 import fastify from "fastify";
 import { createPoll } from "./routes/poll/create-poll";
-import { getPoll } from "./routes/get-poll";
+import { getPoll } from "./routes/poll/get-poll";
 import cookie from "@fastify/cookie";
 import { voteOnPoll } from "./routes/poll/vote-on-poll";
 const app = fastify();

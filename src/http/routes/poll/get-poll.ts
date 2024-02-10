@@ -1,7 +1,7 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import { prismaService } from "../../lib/prisma/prisma.service";
+import { prismaService } from "../../../lib/prisma/prisma.service";
 import z, { record } from "zod";
-import { redis } from "../../lib/redis/redis";
+import { redis } from "../../../lib/redis/redis";
 
 export async function getPoll(app: FastifyInstance) {
   app.get("/polls/:pollId", async (request, reply) => {
@@ -22,12 +22,7 @@ export async function getPoll(app: FastifyInstance) {
         },
       },
     });
-    const result = await redis.zrange(
-      "7690c458-6c2e-43a4-9c0a-ad191641140d",
-      0,
-      -1,
-      "WITHSCORES"
-    );
+    const result = await redis.zrange(pollId, 0, -1, "WITHSCORES");
 
     const options = result.reduce((obj, line, index) => {
       if (index % 2 === 0) {
